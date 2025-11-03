@@ -599,6 +599,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 2
   jumpRayDistance: 1
+  animator: {fileID: 1167361656}
 --- !u!1 &1847436195
 GameObject:
   m_ObjectHideFlags: 0

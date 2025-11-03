@@ -7,6 +7,8 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     private InputSystem_Actions inputActions;
     private MoveBehaviour _mb;
 
+    private Rigidbody2D _rb;
+
     public void Awake()
     {
         inputActions = new InputSystem_Actions();

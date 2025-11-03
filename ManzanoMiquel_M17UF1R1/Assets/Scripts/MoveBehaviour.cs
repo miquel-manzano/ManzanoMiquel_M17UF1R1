@@ -5,19 +5,38 @@ using UnityEngine;
 public class MoveBehaviour : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
+
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpRayDistance;
+    public Animator animator;
+
+    
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     public void MoveCharacter(Vector2 direction)
     {
         Debug.Log("Moving character in direction: " + direction);
         _rb.linearVelocity = new Vector2(direction.normalized.x * speed, _rb.linearVelocity.y);
+
+        if (animator != null)
+        {
+            if (direction.x < 0)
+            {
+                _sr.flipX = true;
+            }
+            else
+            {
+                _sr.flipX = false;
+            }
+            animator.SetFloat("Speed", Mathf.Abs(direction.x));
+        }
     }
 
     public void JumpCharacter()
