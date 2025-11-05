@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     public void OnJump(InputAction.CallbackContext context)
     {
         Debug.Log("----> OnJump");
+        _mb.JumpCharacter();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -30,6 +31,13 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         Debug.Log("----> OnMove");
         _mb.MoveCharacter(context.ReadValue<Vector2>());
     }
+
+    public void OnPowerUp(InputAction.CallbackContext context)
+    {
+        Debug.Log("----> OnPowerUp");
+        _mb.PowerUp();
+    }
+
     public void OnEnable()
     {
         inputActions.Player.Enable();

@@ -44,8 +44,14 @@ public class MoveBehaviour : MonoBehaviour
         if (GetIsGrounded())
         {
             Debug.Log("Jumping character with force: " + jumpForce);
+            
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    public void PowerUp()
+    {
+        _rb.gravityScale *= -1;
     }
 
     private bool GetIsGrounded()
