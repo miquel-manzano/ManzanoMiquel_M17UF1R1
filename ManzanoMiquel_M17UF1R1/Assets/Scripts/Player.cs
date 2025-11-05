@@ -6,8 +6,9 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
 {
     private InputSystem_Actions inputActions;
     private MoveBehaviour _mb;
-
     private Rigidbody2D _rb;
+
+    private Vector2 vectorInput;
 
     public void Awake()
     {
@@ -29,13 +30,13 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     public void OnMove(InputAction.CallbackContext context)
     {
         Debug.Log("----> OnMove");
-        _mb.MoveCharacter(context.ReadValue<Vector2>());
+        vectorInput = context.ReadValue<Vector2>();
     }
 
     public void OnPowerUp(InputAction.CallbackContext context)
     {
         Debug.Log("----> OnPowerUp");
-        _mb.PowerUp();
+        _mb.InvertGravity();
     }
 
     public void OnEnable()
@@ -58,6 +59,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     // Update is called once per frame
     void Update()
     {
-        
+        _mb.MoveCharacter(vectorInput);
     }
 }

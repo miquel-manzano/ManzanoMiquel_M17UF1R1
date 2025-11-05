@@ -571,7 +571,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1167361660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,11 +1099,15 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 63488f2e655a5904e9685bc6d2e48c93, type: 2}
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 32eb445ebb6caae4a8568c668b3afbdf, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 20
     m_Data: {fileID: -1067166890, guid: f38b867f0950be74ea8b4cd3c08f04ed, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -19407136, guid: f38b867f0950be74ea8b4cd3c08f04ed, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 26
     m_Data:

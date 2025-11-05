@@ -13,9 +13,9 @@ public class MoveBehaviour : MonoBehaviour
     [SerializeField] private float jumpRayDistance;
     public Animator animator;
 
-    private bool isGrounded;
+    private bool isGrounded = true;
     private bool jump;
-    private bool powerUp;
+    private bool invertGravity;
 
 
     private void Awake()
@@ -26,7 +26,10 @@ public class MoveBehaviour : MonoBehaviour
 
     public void Update()
     {
-        
+        if (!jump || !invertGravity)
+        {
+            isGrounded = GetIsGrounded();
+        }
     }
 
     public void MoveCharacter(Vector2 direction)
@@ -50,7 +53,7 @@ public class MoveBehaviour : MonoBehaviour
 
     public void JumpCharacter()
     {
-        if (GetIsGrounded())
+        if (isGrounded)
         {
             Debug.Log("Jumping character with force: " + jumpForce);
             
@@ -58,9 +61,9 @@ public class MoveBehaviour : MonoBehaviour
         }
     }
 
-    public void PowerUp()
+    public void InvertGravity()
     {
-        if (GetIsGrounded())
+        if (isGrounded)
         {
             _rb.gravityScale *= -1;
         }
