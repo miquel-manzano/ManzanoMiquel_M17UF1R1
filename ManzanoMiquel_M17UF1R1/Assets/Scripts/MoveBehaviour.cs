@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,12 +13,20 @@ public class MoveBehaviour : MonoBehaviour
     [SerializeField] private float jumpRayDistance;
     public Animator animator;
 
-    
+    private bool isGrounded;
+    private bool jump;
+    private bool powerUp;
+
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
+    }
+
+    public void Update()
+    {
+        
     }
 
     public void MoveCharacter(Vector2 direction)
@@ -51,7 +60,10 @@ public class MoveBehaviour : MonoBehaviour
 
     public void PowerUp()
     {
-        _rb.gravityScale *= -1;
+        if (GetIsGrounded())
+        {
+            _rb.gravityScale *= -1;
+        }
     }
 
     private bool GetIsGrounded()
