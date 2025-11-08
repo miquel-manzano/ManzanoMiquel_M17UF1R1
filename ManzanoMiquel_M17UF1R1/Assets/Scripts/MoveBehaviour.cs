@@ -39,7 +39,7 @@ public class MoveBehaviour : MonoBehaviour
             if (GetIsGrounded())
                 isGravityInvertedReady = true;
         }
-        //Debug.DrawRay(transform.position, groundRayDirection * groundRayDistance, Color.red);// For debugging the ground raycast
+        Debug.DrawRay(transform.position, groundRayDirection * groundRayDistance, Color.red);// For debugging the ground raycast
     }
 
     public void MoveCharacter(Vector2 direction)
