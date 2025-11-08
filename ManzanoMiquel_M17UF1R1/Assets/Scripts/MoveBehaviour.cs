@@ -5,36 +5,46 @@ using UnityEngine;
 
 public class MoveBehaviour : MonoBehaviour
 {
+    //References
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
+    public Animator animator;
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float jumpRayDistance;
-    public Animator animator;
+    [SerializeField] private float groundRayDistance;
 
-    private bool isGrounded = true;
-    private bool jump;
-    private bool invertGravity;
+    private bool isJumpReady = false;
+    private bool isGravityInvertedReady = false;
+    private Vector2 groundRayDirection = Vector2.down;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     public void Update()
     {
-        if (!jump || !invertGravity)
+        if (!isJumpReady)
         {
-            isGrounded = GetIsGrounded();
+            if (GetIsGrounded())
+                isJumpReady = true;
+            
         }
+        if (!isGravityInvertedReady)
+        {
+            if (GetIsGrounded())
+                isGravityInvertedReady = true;
+        }
+        //Debug.DrawRay(transform.position, groundRayDirection * groundRayDistance, Color.red);// For debugging the ground raycast
     }
 
     public void MoveCharacter(Vector2 direction)
     {
-        Debug.Log("Moving character in direction: " + direction);
+        //Debug.Log("Moving character in direction: " + direction);
         _rb.linearVelocity = new Vector2(direction.normalized.x * speed, _rb.linearVelocity.y);
 
         if (animator != null)
@@ -53,25 +63,32 @@ public class MoveBehaviour : MonoBehaviour
 
     public void JumpCharacter()
     {
-        if (isGrounded)
+        if (isJumpReady)
         {
-            Debug.Log("Jumping character with force: " + jumpForce);
-            
-            _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            //Debug.Log("Jumping character with force: " + jumpForce);
+
+            _rb.linearVelocity = new Vector2(0f, 0f);
+            _rb.AddForce((groundRayDirection * -1) * jumpForce, ForceMode2D.Impulse);
+
+            isJumpReady = false;
         }
     }
 
     public void InvertGravity()
     {
-        if (isGrounded)
+        if (isGravityInvertedReady)
         {
             _rb.gravityScale *= -1;
+            transform.Rotate(180f, 0f, 0f);
+            groundRayDirection *= -1;
+            
+            isGravityInvertedReady = false;
         }
     }
 
     private bool GetIsGrounded()
     {
         // Simple ground check using Raycast, toDo: improve with better ground detection using the sprite.
-        return Physics2D.Raycast(transform.position, Vector2.down, jumpRayDistance, LayerMask.GetMask("Ground"));
+        return Physics2D.Raycast(transform.position, groundRayDirection, groundRayDistance, LayerMask.GetMask("Ground"));
     }
 }
