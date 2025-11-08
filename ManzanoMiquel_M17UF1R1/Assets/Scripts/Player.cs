@@ -7,7 +7,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
 {
     private InputSystem_Actions inputActions;
     private MoveBehaviour _mb;
-    public UIManager _uiManager;
 
     private Vector2 vectorInput;
 
@@ -39,13 +38,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     {
         //Debug.Log("----> OnPowerUp");
         _mb.InvertGravity();
-    }
-
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-            Debug.Log("----> OnPause");
-            _uiManager.OnGamePausePress();
     }
 
     public void OnEnable()
