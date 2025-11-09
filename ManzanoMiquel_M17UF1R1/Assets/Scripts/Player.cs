@@ -55,6 +55,11 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         }
     }
 
+    public void Die()
+    {
+        Debug.Log("Player has died.");
+    }
+
     public void OnEnable()
     {
         inputActions.Player.Enable();
