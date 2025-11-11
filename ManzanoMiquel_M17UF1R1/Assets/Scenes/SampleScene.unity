@@ -2456,8 +2456,8 @@ Tilemap:
   - first: {x: 11, y: -6, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -2534,16 +2534,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 5, y: -5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 11, y: -5, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 3
@@ -2687,23 +2677,23 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e10cdeb481a17a143a6a1a4b0a577f5c, type: 2}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 93c161144c3341f448bf39b23e5fe5e9, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 3e89cbca531218246b29819845894316, type: 2}
-  - m_RefCount: 242
+  - m_RefCount: 240
     m_Data: {fileID: 11400000, guid: 3c132e0ed696afd45964f8fd9fd84a06, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 1527578765, guid: f38b867f0950be74ea8b4cd3c08f04ed, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: 423563336, guid: f38b867f0950be74ea8b4cd3c08f04ed, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -312125122, guid: f38b867f0950be74ea8b4cd3c08f04ed, type: 3}
-  - m_RefCount: 242
+  - m_RefCount: 240
     m_Data: {fileID: 7562716900497062, guid: f38b867f0950be74ea8b4cd3c08f04ed, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 247
+  - m_RefCount: 246
     m_Data:
       e00: 1
       e01: 0
@@ -2724,7 +2714,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 1.65e-43, g: 1.65e-43, b: 1.65e-43, a: 1.65e-43}
-  - m_RefCount: 247
+  - m_RefCount: 246
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4325,7 +4315,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4508,7 +4498,7 @@ MonoBehaviour:
   animator: {fileID: 1167361656}
   speed: 5
   jumpForce: 5
-  groundRayDistance: 0.85
+  groundRayDistance: 1.1
 --- !u!1 &1172138931
 GameObject:
   m_ObjectHideFlags: 0
