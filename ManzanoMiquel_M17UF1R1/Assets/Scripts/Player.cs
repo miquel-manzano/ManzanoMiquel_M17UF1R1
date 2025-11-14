@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     private Vector2 vectorInput;
 
     public AudioClip jumpSoundFX;
-    //public AudioClip[] miawSoundsFX;
+    public AudioClip[] miawSoundsFX;
 
 
     public void Awake()
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         if (context.performed)
         {
             Debug.Log("----> OnInteract");
-            //SoundFXManager._instance.PlayRandomSoundFXClip(miawSoundsFX, transform, 0.5f);
+            SoundFXManager._instance.PlayRandomSoundFXClip(miawSoundsFX, transform, 0.5f);
         }
     }
 

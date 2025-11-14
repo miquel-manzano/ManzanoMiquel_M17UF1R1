@@ -35,7 +35,7 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }
 
-    /*
+    
     public void PlayRandomSoundFXClip(AudioClip[] audioClips, Transform spawnTransform, float volume)
     {
         // Random index
@@ -59,5 +59,5 @@ public class SoundFXManager : MonoBehaviour
         // Destroy gameobject after clip length
         Destroy(audioSource.gameObject, clipLength);
     }
-    */
+    
 }

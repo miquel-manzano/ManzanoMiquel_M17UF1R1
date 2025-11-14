@@ -16,7 +16,9 @@ public class MoveBehaviour : MonoBehaviour
 
     private bool isJumpReady = false;
     private bool isGravityInvertedReady = false;
-    private Vector2 groundRayDirection = Vector2.down;
+    private Vector2 characterDirection = Vector2.down;
+
+    private bool isGrounded = false;// I use a trigger collider to set this variable
 
 
     private void Awake()
@@ -28,18 +30,19 @@ public class MoveBehaviour : MonoBehaviour
 
     public void Update()
     {
+        //Debug.Log("Is Grounded: " + isGrounded);
         if (!isJumpReady)
         {
-            if (GetIsGrounded())
+            if (isGrounded)
                 isJumpReady = true;
             
         }
         if (!isGravityInvertedReady)
         {
-            if (GetIsGrounded())
+            if (isGrounded)
                 isGravityInvertedReady = true;
         }
-        Debug.DrawRay(transform.position, groundRayDirection * groundRayDistance, Color.red);// For debugging the ground raycast
+        //Debug.DrawRay(transform.position, groundRayDirection * groundRayDistance, Color.red);// For debugging the ground raycast
     }
 
     public void MoveCharacter(Vector2 direction)
@@ -68,9 +71,10 @@ public class MoveBehaviour : MonoBehaviour
             //Debug.Log("Jumping character with force: " + jumpForce);
 
             _rb.linearVelocity = new Vector2(0f, 0f);
-            _rb.AddForce((groundRayDirection * -1) * jumpForce, ForceMode2D.Impulse);
+            _rb.AddForce((characterDirection * -1) * jumpForce, ForceMode2D.Impulse);
 
             isJumpReady = false;
+            isGrounded = false;
         }
     }
 
@@ -80,15 +84,25 @@ public class MoveBehaviour : MonoBehaviour
         {
             _rb.gravityScale *= -1;
             transform.Rotate(180f, 0f, 0f);
-            groundRayDirection *= -1;
-            
+            _rb.AddForce((characterDirection * -1) * jumpForce, ForceMode2D.Impulse);
+            characterDirection *= -1;
+
             isGravityInvertedReady = false;
+            isGrounded = false;
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isGrounded = true;
+    }
+
+    /*
+     * Old funground check method using Raycast
     private bool GetIsGrounded()
     {
         // Simple ground check using Raycast, toDo: improve with better ground detection using the sprite.
         return Physics2D.Raycast(transform.position, groundRayDirection, groundRayDistance, LayerMask.GetMask("Ground"));
     }
+    */
 }
