@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http.Headers;
 using UnityEngine;
 
@@ -42,6 +43,10 @@ public class MoveBehaviour : MonoBehaviour
             if (isGrounded)
                 isGravityInvertedReady = true;
         }
+        Debug.Log("IsGrounded???" + isGrounded);
+        animator.SetFloat("xVelocity", Math.Abs(_rb.linearVelocity.x));
+        animator.SetFloat("yVelocity", _rb.linearVelocity.y);
+        animator.SetBool("isJumping", !isGrounded);
         //Debug.DrawRay(transform.position, groundRayDirection * groundRayDistance, Color.red);// For debugging the ground raycast
     }
 
@@ -74,7 +79,7 @@ public class MoveBehaviour : MonoBehaviour
             _rb.AddForce((characterDirection * -1) * jumpForce, ForceMode2D.Impulse);
 
             isJumpReady = false;
-            isGrounded = false;
+            //isGrounded = false;
         }
     }
 
@@ -88,13 +93,18 @@ public class MoveBehaviour : MonoBehaviour
             characterDirection *= -1;
 
             isGravityInvertedReady = false;
-            isGrounded = false;
+            //isGrounded = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isGrounded = false;
     }
 
     /*
