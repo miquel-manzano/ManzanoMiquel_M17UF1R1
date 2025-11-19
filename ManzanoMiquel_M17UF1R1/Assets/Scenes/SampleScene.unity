@@ -4296,9 +4296,9 @@ GameObject:
   - component: {fileID: 1167361656}
   - component: {fileID: 1167361659}
   - component: {fileID: 1167361658}
-  - component: {fileID: 1167361661}
-  - component: {fileID: 1167361660}
   - component: {fileID: 1167361662}
+  - component: {fileID: 1167361664}
+  - component: {fileID: 1167361663}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -4471,40 +4471,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1167361660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167361654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc26ff4faa4b5354fab2f2a3ea1e4487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSoundFX: {fileID: 8300000, guid: 64c7d8104ab801c42a250d9fb8e8221b, type: 3}
-  miawSoundsFX:
-  - {fileID: 8300000, guid: 3fb83e10d2ed5fa44888e93389260114, type: 3}
-  - {fileID: 8300000, guid: 64c0726c03c5cb945995657482547716, type: 3}
-  - {fileID: 8300000, guid: b25b15cbd5aabfd40806af0120b361b7, type: 3}
-  - {fileID: 8300000, guid: f2fd0e56d76fcf943a1f3b24e7952caa, type: 3}
---- !u!114 &1167361661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167361654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3717dd1f86417949853e066ef33ac7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1167361656}
-  speed: 7
-  jumpForce: 7
-  groundRayDistance: 1.1
 --- !u!70 &1167361662
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4542,6 +4508,40 @@ CapsuleCollider2D:
   m_Offset: {x: 0.06585205, y: -0.47742173}
   m_Size: {x: 0.29445845, y: 0.14864226}
   m_Direction: 1
+--- !u!114 &1167361663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167361654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc26ff4faa4b5354fab2f2a3ea1e4487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miawSoundsFX:
+  - {fileID: 8300000, guid: 3fb83e10d2ed5fa44888e93389260114, type: 3}
+  - {fileID: 8300000, guid: 64c0726c03c5cb945995657482547716, type: 3}
+  - {fileID: 8300000, guid: b25b15cbd5aabfd40806af0120b361b7, type: 3}
+  - {fileID: 8300000, guid: f2fd0e56d76fcf943a1f3b24e7952caa, type: 3}
+--- !u!114 &1167361664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167361654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3717dd1f86417949853e066ef33ac7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1167361656}
+  speed: 7
+  jumpForce: 7
+  groundRayDistance: 1.1
+  jumpSoundFX: {fileID: 8300000, guid: 64c7d8104ab801c42a250d9fb8e8221b, type: 3}
 --- !u!1 &1172138931
 GameObject:
   m_ObjectHideFlags: 0

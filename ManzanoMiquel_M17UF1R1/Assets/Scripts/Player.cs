@@ -10,7 +10,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
 
     private Vector2 vectorInput;
 
-    public AudioClip jumpSoundFX;
     public AudioClip[] miawSoundsFX;
 
 
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         if (context.performed)
         {
             _mb.JumpCharacter();
-            SoundFXManager._instance.PlaySoundFXClip(jumpSoundFX, transform, 0.5f);
         }
     }
 
@@ -51,7 +49,6 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         if (context.performed)
         {
             _mb.InvertGravity();
-            SoundFXManager._instance.PlaySoundFXClip(jumpSoundFX, transform, 0.5f);
         }
     }
 
