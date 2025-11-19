@@ -13,11 +13,16 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     public AudioClip[] miawSoundsFX;
 
 
+    //Provisional
+    public Animator animator;
+
+
     public void Awake()
     {
         inputActions = new InputSystem_Actions();
         inputActions.Player.SetCallbacks(this);
         _mb = GetComponent<MoveBehaviour>();
+        animator = GetComponent<Animator>();
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -55,6 +60,7 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     public void Die()
     {
         Debug.Log("Player has died.");
+        animator.SetBool("isDead", true);
     }
 
     public void OnEnable()
