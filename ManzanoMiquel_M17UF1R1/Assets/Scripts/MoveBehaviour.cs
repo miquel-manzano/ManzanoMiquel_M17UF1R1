@@ -16,11 +16,11 @@ public class MoveBehaviour : MonoBehaviour
     [SerializeField] private float groundRayDistance;
 
     // I use a jump and gravity ready variables to make crazy combos using an extra jump while falling :3
-    private bool isJumpReady = false;
+    private bool isJumpReady = true;
     private bool isGravityInvertedReady = false;
     private Vector2 characterDirection = Vector2.down;
 
-    private bool isGrounded = false;// I use a trigger collider to set this variable
+    private bool isGrounded;// I use a trigger collider to set this variable
     public AudioClip jumpSoundFX;
 
 
@@ -31,21 +31,11 @@ public class MoveBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+
     public void FixedUpdate()
     {
         //Debug.Log("Is Grounded: " + isGrounded);
-        if (!isJumpReady)
-        {
-            if (isGrounded)
-                isJumpReady = true;
-            
-        }
-        if (!isGravityInvertedReady)
-        {
-            if (isGrounded)
-                isGravityInvertedReady = true;
-        }
-        //Debug.Log("IsGrounded???" + isGrounded);
+
         animator.SetFloat("xVelocity", Math.Abs(_rb.linearVelocity.x));
         animator.SetFloat("yVelocity", _rb.linearVelocity.y);
         animator.SetBool("isJumping", !isGrounded);
@@ -74,12 +64,13 @@ public class MoveBehaviour : MonoBehaviour
     {
         if (isJumpReady)
         {
+            isJumpReady = false;
             //Debug.Log("Jumping character with force: " + jumpForce);
             SoundFXManager._instance.PlaySoundFXClip(jumpSoundFX, transform, 0.5f);
             _rb.linearVelocity = new Vector2(0f, 0f);
             _rb.AddForce((characterDirection * -1) * jumpForce, ForceMode2D.Impulse);
 
-            isJumpReady = false;
+            //isJumpReady = false;
             //isGrounded = false;
         }
     }
@@ -88,13 +79,14 @@ public class MoveBehaviour : MonoBehaviour
     {
         if (isGravityInvertedReady)
         {
+            isGravityInvertedReady = false;
             SoundFXManager._instance.PlaySoundFXClip(jumpSoundFX, transform, 0.5f);
             _rb.gravityScale *= -1;
             transform.Rotate(180f, 0f, 0f);
             _rb.AddForce((characterDirection * -1) * jumpForce, ForceMode2D.Impulse);
             characterDirection *= -1;
 
-            isGravityInvertedReady = false;
+            //isGravityInvertedReady = false;
             //isGrounded = false;
         }
     }
@@ -102,6 +94,15 @@ public class MoveBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
+
+        if (!isJumpReady)
+        {
+            isJumpReady = true;
+        }
+        if (!isGravityInvertedReady && isGrounded)
+        {
+            isGravityInvertedReady = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
