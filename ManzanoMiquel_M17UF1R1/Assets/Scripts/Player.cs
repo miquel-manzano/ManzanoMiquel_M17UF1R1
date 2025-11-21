@@ -73,7 +73,7 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         inputActions.Player.Disable();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _mb.MoveCharacter(vectorInput);
     }

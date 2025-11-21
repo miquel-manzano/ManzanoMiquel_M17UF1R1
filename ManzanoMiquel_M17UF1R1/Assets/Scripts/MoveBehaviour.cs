@@ -31,7 +31,7 @@ public class MoveBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         //Debug.Log("Is Grounded: " + isGrounded);
         if (!isJumpReady)
