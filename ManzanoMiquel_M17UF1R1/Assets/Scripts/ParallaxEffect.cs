@@ -24,7 +24,6 @@ public class ParallaxEffect : MonoBehaviour
         transform.Translate(new Vector3(deltaX, 0, 0));
         previousCameraPosition = cameraTransform.position;
 
-        // Horizontal Parallax Duplication
         if (canDuplicate)
         {
             if (moveAmount > startPosition + spriteWidth)
@@ -38,7 +37,5 @@ public class ParallaxEffect : MonoBehaviour
                 startPosition -= spriteWidth;
             }
         }
-
-        //Vertical Parallax
     }
 }
