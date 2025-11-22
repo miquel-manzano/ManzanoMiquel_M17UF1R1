@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void OnGameRestartPress()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

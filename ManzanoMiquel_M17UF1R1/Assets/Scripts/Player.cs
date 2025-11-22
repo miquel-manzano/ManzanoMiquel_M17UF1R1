@@ -12,9 +12,10 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
 
     public AudioClip[] miawSoundsFX;
 
-
-    //Provisional
+    
     public Animator animator;
+    public GameOverScreen GameOverScreen;
+    public WinScreen WinScreen;
 
 
     public void Awake()
@@ -23,7 +24,10 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
         inputActions.Player.SetCallbacks(this);
         _mb = GetComponent<MoveBehaviour>();
         animator = GetComponent<Animator>();
+        DisableInvertGravity();
     }
+
+
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -61,6 +65,12 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     {
         Debug.Log("Player has died.");
         animator.SetBool("isDead", true);
+        GameOverScreen.Setup();
+    }
+
+    public void Win()
+    {
+        WinScreen.Setup();
     }
 
     public void OnEnable()
@@ -76,5 +86,21 @@ public class Player : MonoBehaviour, InputSystem_Actions.IPlayerActions
     void FixedUpdate()
     {
         _mb.MoveCharacter(vectorInput);
+
+    }
+
+    public void DisableInvertGravity()
+    {
+        inputActions.Player.InvertGravityToggle.Disable();
+    }
+
+    public void EnableInvertGravity()
+    {
+        inputActions.Player.InvertGravityToggle.Enable();
+    }
+
+    public void DisableInputs()
+    {
+        inputActions.Player.Disable();
     }
 }

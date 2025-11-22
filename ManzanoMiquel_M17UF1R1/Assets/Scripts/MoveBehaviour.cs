@@ -11,7 +11,7 @@ public class MoveBehaviour : MonoBehaviour
     private SpriteRenderer _sr;
     public Animator animator;
 
-    [SerializeField] private float speed;
+    public float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundRayDistance;
 
