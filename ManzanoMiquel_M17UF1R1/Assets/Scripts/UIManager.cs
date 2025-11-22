@@ -41,6 +41,12 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void OnGameMainMenuPress()
+    {
+        Time.timeScale = 1f; // Ensure time scale is reset
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void OnGameQuitPress()
     {
         Application.Quit();
