@@ -27,3 +27,4 @@ Aquest joc és un **plataformes en 2D** amb un fort enfocament en el control de 
 - Un gat explorador com a protagonista
 
 
+**Tens una build funcional comprimida al repositori**
